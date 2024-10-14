@@ -22,6 +22,10 @@ class AddToCartLocators {
     get buttonViewCartFromModal(){
         return $("//a[@class='add-cart-popup-button']")
     }
+
+    get priceFromProductPage(){
+        return $("//span[@class='sale-price']")
+    }
 }
 
 module.exports = new AddToCartLocators();

@@ -1,5 +1,5 @@
 const checkoutLocators = require("./checkoutLocators");
-const utility = require("../../Utilities/utility");
+const utility = require("../../utilities/utility");
 
 class CheckoutActions {
   async getSubTotalAmount() {

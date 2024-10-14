@@ -1,7 +1,7 @@
 const searchActions = require("../pages/search/searchActions");
 const addToCartActions = require("../pages/addToCart/addToCartActions");
 const checkoutActions = require("../pages/checkout/checkoutActions");
-const utility = require("../Utilities/utility");
+const utility = require("../utilities/utility");
 const productName = "Nike react phantom run flyknit 2";
 
 var productQty;

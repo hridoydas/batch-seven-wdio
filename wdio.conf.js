@@ -1,4 +1,5 @@
 const productPurchase = "./test/specs/productPurchase.spec.js";
+const auth = "./test/specs/auth.spec.js";
 exports.config = {
   //
   // ====================
@@ -21,7 +22,7 @@ exports.config = {
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: [productPurchase],
+  specs: [auth],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -238,7 +239,7 @@ exports.config = {
    * @param {object} suite suite details
    */
   afterSuite: async function (suite) {
-    await browser.quit()
+    await browser.quit();
   },
   /**
    * Runs after a WebdriverIO command gets executed

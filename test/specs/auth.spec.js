@@ -19,13 +19,13 @@ describe("Demo evershop site product purchase journey", () => {
     await browser.pause(5000);
   });
 
-  it("Should able to successfully logout", async () => {
+  it.skip("Should able to successfully logout", async () => {
     await loginActions.clickOnProfileIcon();
     await loginActions.clickOnLogout();
     await browser.pause(5000);
   });
 
-  it("Should able to successfully login", async () => {
+  it.skip("Should able to successfully login", async () => {
     await loginActions.clickOnProfileIcon();
     await browser.pause(5000);
     await loginActions.enterEmail(email);

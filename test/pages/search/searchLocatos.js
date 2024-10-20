@@ -1,6 +1,6 @@
 class SearchLocators {
   get searchIcon() {
-    return $("//a[@class='search-icon']");
+    return $("//a[contains(@class,'search-icon')]");
   }
 
   get searchInputField() {

@@ -25,7 +25,7 @@ exports.config = {
   specs: [productPurchase],
 
   suites: {
-    purchase: [[auth], [auth, productPurchase]],
+    purchase: [[auth], [productPurchase]],
   },
   // Patterns to exclude.
   exclude: [
@@ -96,11 +96,11 @@ exports.config = {
   baseUrl: "https://demo.evershop.io/",
   //
   // Default timeout for all waitFor* commands.
-  waitforTimeout: 180000,
+  waitforTimeout: 10000,
   //
   // Default timeout in milliseconds for request
   // if browser driver or grid doesn't send response
-  connectionRetryTimeout: 120000,
+  connectionRetryTimeout: 20000,
   //
   // Default request retries count
   connectionRetryCount: 3,
@@ -142,12 +142,22 @@ exports.config = {
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
   // reporters: ['dot'],
+  reporters: [
+    [
+      "allure",
+      {
+        outputDir: "allure-results",
+        disableWebdriverStepsReporting: false,
+        disableWebdriverScreenshotsReporting: false,
+      },
+    ],
+  ],
 
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: "bdd",
-    timeout: 60000,
+    timeout: 15000,
   },
 
   //
@@ -246,8 +256,20 @@ exports.config = {
    * @param {boolean} result.passed    true if test has passed, otherwise false
    * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-  // },
+  afterTest: async function (
+    test,
+    context,
+    { error, result, duration, passed, retries }
+  ) {
+    if (error) {
+      const screenshot = await browser.takeScreenshot();
+      allure.addAttachment(
+        "Screenshot",
+        Buffer.from(screenshot, "base64"),
+        "failure/png"
+      );
+    }
+  },
 
   /**
    * Hook that gets executed after the suite has ended

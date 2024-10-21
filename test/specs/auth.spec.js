@@ -5,7 +5,7 @@ var email = "";
 var fullName = "";
 var password = "";
 
-describe("Demo evershop site product purchase journey", () => {
+describe("Demo evershop site authentication Joruney", () => {
   it("Should able to successfully register", async () => {
     await loginActions.clickOnProfileIcon();
     await signupActions.clickOnCreateAccount();

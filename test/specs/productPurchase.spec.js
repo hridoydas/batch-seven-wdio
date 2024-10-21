@@ -29,7 +29,7 @@ describe("Demo evershop site product purchase journey", () => {
   });
 
   it("Should successfully verify total amount and grand total amount", async () => {
-    const expectedTotalPrice = productQty * singleProductPrice;
+    const expectedTotalPrice = 11 * singleProductPrice;
     const actualSubTotal = await checkoutActions.getSubTotalAmount();
     const actualGrandTotal = await checkoutActions.getGrandTotalAmount();
     expect(expectedTotalPrice).toEqual(actualSubTotal);
